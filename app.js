@@ -1084,7 +1084,6 @@ const els = {
   quiz: document.getElementById('quizArea'),
   resultsArea: document.getElementById('resultsArea'),
   runid: document.getElementById('runid'),
-  brandCtx: document.getElementById('brandCtx'),
 };
 
 function shuffle(arr){
@@ -1099,7 +1098,6 @@ function renderHome(){
   document.getElementById('notesArea').classList.remove('show');
   els.home.style.display = 'block';
   els.runid.textContent = '';
-  els.brandCtx.textContent = 'article trials';
 
   let cards = '';
   let noteCards = '';
@@ -1178,7 +1176,6 @@ function renderNotes(key){
   els.quiz.style.display = 'none';
   els.resultsArea.style.display = 'none';
   els.runid.textContent = '';
-  els.brandCtx.textContent = 'study notes';
 
   let blocks = '';
   a.notes.forEach(n => {
@@ -1219,10 +1216,8 @@ function startQuiz(m, key){
 
   if(mode === 'article'){
     quizQuestions = ARTICLES[key].questions.map((q, i) => ({ id: `${key}::${i}`, ...q }));
-    els.brandCtx.textContent = ARTICLES[key].name.toLowerCase();
   } else {
     quizQuestions = shuffle(Object.keys(progress.missed).map(id => ({ id, ...progress.missed[id] })));
-    els.brandCtx.textContent = 'missed-concept review';
   }
 
   els.home.style.display = 'none';
